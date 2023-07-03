@@ -17,6 +17,7 @@ class CountryFactory extends Factory
      */
     public function definition(): array
     {
+        $users = \App\Models\User::pluck('id')->all();
         return [
             'name' => fake()->country(),
         ];

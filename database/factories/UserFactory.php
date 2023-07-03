@@ -18,8 +18,10 @@ class UserFactory extends Factory
     public function definition(): array
     {
         $countries = \App\Models\Country::pluck('id')->all();
+        $types = \App\Models\Type::pluck('id')->all();
         return [
             'name' => fake()->name(),
+            'type' => fake()->randomElement($types),
             'country_id' => fake()->randomElement($countries),
         ];
     }

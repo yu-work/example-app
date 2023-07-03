@@ -13,16 +13,23 @@ return new class extends Migration
      */
     public function up()
     {
+        Schema::create('users', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->string('type');
+            $table->unsignedInteger('country_id');
+            $table->timestamps();
+        });
+
         Schema::create('countries', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->timestamps();
         });
- 
-        Schema::create('users', function (Blueprint $table) {
+
+        Schema::create('types', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->unsignedInteger('country_id');
+            $table->string('type_name');
             $table->timestamps();
         });
     }
@@ -36,5 +43,6 @@ return new class extends Migration
     {
         Schema::drop('users');
         Schema::drop('countries');
+        Schema::drop('types');
     }
 };
