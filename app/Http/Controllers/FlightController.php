@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Flight;
+use App\Models\Destination;
 use App\Http\Requests\StoreFlightRequest;
 use App\Http\Requests\UpdateFlightRequest;
 
@@ -37,7 +38,19 @@ class FlightController extends Controller
      */
     public function show(Flight $flight)
     {
-        return view('flight', ['flights' => Flight::all()]);
+        return view('flight', [
+            'flights' => Flight::all(),
+            'destinations' => Destination::addSelect([
+                'flight_name' => Flight::select('name')
+                    ->whereColumn('destination_id', 'destinations.id')
+                    ->orderByDesc('arrived_at')
+                    ->limit(1),
+                'arrived_at' => Flight::select('arrived_at')
+                    ->whereColumn('destination_id', 'destinations.id')
+                    ->orderByDesc('arrived_at')
+                    ->limit(1)
+            ])->get()
+        ]);
     }
 
     /**
