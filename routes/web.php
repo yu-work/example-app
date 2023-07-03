@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FlightController;
 use Illuminate\Support\Facades\Route;
 use Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -18,6 +19,9 @@ use App\Models\User;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/flight', [FlightController::class, 'show']);
+
 
 Route::get('/faker', function () {
     $faker = Faker\Factory::create('ja_JP');
