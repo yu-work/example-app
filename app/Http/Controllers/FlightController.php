@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Flight;
 use App\Models\Destination;
+use App\Models\User;
 use App\Http\Requests\StoreFlightRequest;
 use App\Http\Requests\UpdateFlightRequest;
 
@@ -49,7 +50,7 @@ class FlightController extends Controller
                     ->whereColumn('destination_id', 'destinations.id')
                     ->orderByDesc('arrived_at')
                     ->limit(1)
-            ])->get()
+            ])->get(),
         ]);
     }
 
