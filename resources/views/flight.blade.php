@@ -2,6 +2,9 @@
     <x-slot:title>
         Flight Page
     </x-slot>
+    <div id="app">
+        <example-component></example-component>
+    </div>
     <div class="container-fluid">
         <h1>Last Flight</h1>
         <table class="table">
