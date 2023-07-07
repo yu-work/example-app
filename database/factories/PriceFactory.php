@@ -16,9 +16,7 @@ class PriceFactory extends Factory
      */
     public function definition(): array
     {
-        $products = \App\Models\Product::pluck('product_id')->all();
         return [
-            'product_id' => fake()->randomElement($products),
             'price' => fake()->numberBetween($min = 10000, $max = 100000),
         ];
     }

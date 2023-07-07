@@ -16,8 +16,10 @@ class ProductFactory extends Factory
      */
     public function definition(): array
     {
+        $prices = \App\Models\Price::pluck('price_id')->all();
         return [
             'name' => 'Prod ' . fake()->randomNumber($nbDigits = 8),
+            'price_id' => fake()->randomNumber($prices),
         ];
     }
 }

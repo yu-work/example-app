@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
+
+    /**
+     * 
+     */
+    public function price()
+    {
+        return $this->hasOne(Price::class, 'price_id', 'price_id');
+    }
 }

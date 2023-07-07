@@ -13,7 +13,7 @@ class ProductController extends Controller
     public function show()
     {
         return view('product', [
-            'list' => Product::all(),
+            'list' => Product::with('price')->limit(10)->get(),
         ]);
     }
 }
