@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FlightController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -21,7 +22,7 @@ Route::get('/', function () {
 });
 
 Route::get('/flight', [FlightController::class, 'show']);
-
+Route::get('/product', [ProductController::class, 'show']);
 
 Route::get('/faker', function () {
     $faker = Faker\Factory::create('ja_JP');
