@@ -27,6 +27,10 @@ class HelloWorld extends Command
      */
     public function handle()
     {
+        $page = new class {
+            public $title = 'main page';
+        };
+        $this->info($page->title);
         $this->info('Hello World!');
     }
 }
