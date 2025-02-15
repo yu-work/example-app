@@ -20,12 +20,7 @@ class HelloWorld extends Command
      */
     protected $description = 'Display Hello World message';
 
-    /**
-     * Command tags for filtering.
-     *
-     * @var array
-     */
-    public $tags = ['user-created'];
+
 
     /**
      * Execute the console command.
