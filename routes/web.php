@@ -16,9 +16,9 @@ use App\Models\User;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+use App\Http\Controllers\CommandListController;
+
+Route::get('/', [CommandListController::class, 'index']);
 
 Route::get('/flight', [FlightController::class, 'show']);
 
