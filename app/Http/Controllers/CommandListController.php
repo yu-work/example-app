@@ -11,10 +11,12 @@ class CommandListController extends Controller
     {
         $commands = [];
         foreach (Artisan::all() as $name => $command) {
-            $commands[] = [
-                'name' => $name,
-                'description' => $command->getDescription()
-            ];
+            if (property_exists($command, 'tags') && in_array('user-created', $command->tags)) {
+                $commands[] = [
+                    'name' => $name,
+                    'description' => $command->getDescription()
+                ];
+            }
         }
         
         return view('commands.index', ['commands' => $commands]);
